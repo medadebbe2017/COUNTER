@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Counter — Tax Calculator</title>
+
+<!-- Home Screen / PWA setup -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#080d13">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Counter">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <h1>Counter</h1>
+    <p class="subhead">Built for cashiers without a POS system. Counter calculates tax and card fees automatically, and sends a digital receipt to the customer's phone — or to whoever's delivering the order.</p>
+  </header>
+
+  <div class="panel business-panel">
+    <button class="business-toggle" id="businessToggle" type="button">
+      <span>Business Info</span>
+      <span class="business-toggle-arrow" id="businessToggleArrow">▸</span>
+    </button>
+    <div class="business-fields" id="businessFields">
+      <input type="text" id="businessNameInput" class="name-input" placeholder="e.g. Rivington Deli">
+      <input type="text" id="businessStreetInput" class="name-input" placeholder="e.g. 210 Rivington St">
+      <div class="delivery-grid">
+        <input type="text" id="businessCityInput" class="name-input" placeholder="e.g. New York">
+        <input type="text" id="businessStateInput" class="name-input" placeholder="e.g. NY">
+        <input type="text" id="businessZipInput" class="name-input" placeholder="e.g. 10002">
+      </div>
+      <input type="tel" id="businessPhoneInput" class="name-input" placeholder="Phone number (optional)">
+    </div>
+  </div>
+
+  <div class="panel customer-panel">
+    <div class="panel-title">Customer Info <span class="panel-title-note">(optional — for phone orders)</span></div>
+    <div class="customer-grid">
+      <input type="text" id="customerNameInput" class="name-input" placeholder="Customer name">
+      <input type="tel" id="customerPhoneInput" class="name-input" placeholder="Phone number">
+    </div>
+    <label class="pod-toggle">
+      <input type="checkbox" id="podToggle">
+      <span>Pay on delivery</span>
+    </label>
+
+    <div class="panel-title panel-title--spaced">Order Type</div>
+    <div class="order-type-grid" id="orderTypeGrid"></div>
+
+    <div class="delivery-fields" id="deliveryFields">
+      <input type="text" id="addressStreetInput" class="name-input" placeholder="Street address">
+      <input type="text" id="addressAptInput" class="name-input" placeholder="Apt / Suite (optional)">
+      <div class="delivery-grid">
+        <input type="text" id="addressCityInput" class="name-input" placeholder="e.g. New York">
+        <input type="text" id="addressStateInput" class="name-input" placeholder="e.g. NY">
+        <input type="text" id="addressZipInput" class="name-input" placeholder="ZIP">
+      </div>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="panel">
+      <div class="panel-title">New Item</div>
+
+      <input type="text" id="nameInput" class="name-input" placeholder="Item name (optional)">
+
+      <input type="text" id="instructionsInput" class="name-input" placeholder="Special instructions (optional)">
+
+      <div class="price-qty-row">
+        <div class="price-input-row">
+          <span>$</span>
+          <input type="text" id="priceInput" placeholder="0.00" inputmode="decimal">
+        </div>
+        <div class="qty-input-row">
+          <span>Qty</span>
+          <input type="text" id="qtyInput" placeholder="1" inputmode="numeric">
+        </div>
+      </div>
+
+      <div class="cat-grid" id="catGrid"></div>
+
+      <div class="panel-title panel-title--spaced">Payment Method</div>
+      <div class="pay-grid" id="payGrid"></div>
+
+      <button class="add-btn" id="addBtn" disabled>Add to Order</button>
+      <div class="rate-note">Tax: 8.875% (NYC) on taxable items · Card surcharge: 4%</div>
+    </div>
+
+    <div class="receipt-panel">
+      <div class="panel-title">Order Receipt</div>
+      <div class="receipt-tape" id="receiptTape">
+        <div class="receipt-head">
+          <div class="name" id="receiptBusinessName">Rivington Deli</div>
+          <div class="meta" id="receiptBusinessAddress">210 Rivington St, New York, NY 10002</div>
+          <div class="meta" id="receiptBusinessPhone"></div>
+          <div class="meta" id="receiptDate"></div>
+        </div>
+        <div class="receipt-customer-block" id="receiptCustomerBlock">
+          <div class="receipt-section-label">Customer Info</div>
+          <div class="meta" id="receiptCustomer"></div>
+          <div class="meta" id="receiptAddress"></div>
+        </div>
+        <div id="receiptBody">
+          <div class="receipt-empty">No items yet — add one to start the order.</div>
+        </div>
+      </div>
+      <button class="clear-btn" id="clearBtn">Clear Order</button>
+      <button class="email-btn" id="emailBtn">Email Receipt</button>
+      <button class="text-btn" id="textBtn">Text Receipt</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p class="footer-copyright">&copy; 2026 <span class="footer-brand">Counter</span>. All rights reserved.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Your Receipt</title>
+<meta name="theme-color" content="#080d13">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <h1>Your Receipt</h1>
+    <p class="subhead">Here's a copy of your order.</p>
+  </header>
+
+  <div class="receipt-panel receipt-standalone">
+    <div class="receipt-tape" id="receiptTape">
+      <div class="receipt-head">
+        <div class="name" id="receiptBusinessName"></div>
+        <div class="meta" id="receiptBusinessAddress"></div>
+        <div class="meta" id="receiptBusinessPhone"></div>
+        <div class="meta" id="receiptDate"></div>
+      </div>
+      <div class="receipt-customer-block" id="receiptCustomerBlock">
+        <div class="receipt-section-label">Customer Info</div>
+        <div class="meta" id="receiptCustomer"></div>
+        <div class="meta" id="receiptAddress"></div>
+      </div>
+      <div id="receiptBody">
+        <div class="receipt-empty">Loading receipt…</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p class="footer-copyright" id="receiptCopyright"></p>
+</footer>
+
+<script src="receipt-view.js"></script>
+</body>
+</html>
