@@ -4,7 +4,7 @@ A tax and payment calculator built for businesses without a POS system.
 
 _Originally created in 2022._
 
-**Live demo:cntrapp.com
+Live demo:cntrapp.com
 
 ## The problem
 
